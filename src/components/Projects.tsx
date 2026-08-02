@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import { Github, ExternalLink, FolderGit2 } from 'lucide-react';
+import { Github, ExternalLink } from 'lucide-react';
+import Reveal from './Reveal';
 
 const projects = [
   {
@@ -8,7 +8,6 @@ const projects = [
     tags: ['Arduino', 'Embedded Systems', 'IoT', 'C++'],
     github: 'https://github.com/Jteckz',
     demo: '#',
-    color: 'from-cyan-500 to-blue-500',
   },
   {
     title: 'Iris Prediction ML System',
@@ -16,7 +15,6 @@ const projects = [
     tags: ['Python', 'Machine Learning', 'Scikit-learn', 'Classification'],
     github: 'https://github.com/Jteckz',
     demo: '#',
-    color: 'from-purple-500 to-pink-500',
   },
   {
     title: 'Titanic Survival Prediction',
@@ -24,7 +22,6 @@ const projects = [
     tags: ['Python', 'Data Science', 'Feature Engineering', 'Classification'],
     github: 'https://github.com/Jteckz',
     demo: '#',
-    color: 'from-amber-500 to-orange-500',
   },
   {
     title: 'Flask REST APIs',
@@ -32,7 +29,6 @@ const projects = [
     tags: ['Flask', 'REST APIs', 'Python', 'Backend'],
     github: 'https://github.com/Jteckz',
     demo: '#',
-    color: 'from-green-500 to-emerald-500',
   },
   {
     title: 'Agricultural Marketplace Platform',
@@ -40,7 +36,6 @@ const projects = [
     tags: ['Flask', 'React', 'Database Design', 'AgriTech'],
     github: 'https://github.com/Jteckz',
     demo: '#',
-    color: 'from-lime-500 to-green-500',
   },
   {
     title: 'Snack & Beverage Delivery Startup',
@@ -48,99 +43,56 @@ const projects = [
     tags: ['Full Stack', 'Logistics', 'Startup', 'Mobile'],
     github: 'https://github.com/Jteckz',
     demo: '#',
-    color: 'from-rose-500 to-red-500',
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
 export default function Projects() {
   return (
-    <section id="projects" className="relative py-20 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-accent-500/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="section-title">Featured Projects</h2>
-          <p className="section-subtitle">
-            A collection of projects showcasing my skills in AI, backend development, and innovation
-          </p>
-        </motion.div>
-
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {projects.map((project) => (
-            <motion.div
-              key={project.title}
-              variants={itemVariants}
-              className="group relative"
-            >
-              <div className="card p-6 h-full flex flex-col group-hover:scale-[1.02] transition-all duration-300 group-hover:neon-glow">
-                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${project.color} p-2.5 mb-4 flex items-center justify-center`}>
-                  <FolderGit2 className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-3 group-hover:text-primary-300 transition-colors">
-                  {project.title}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 text-xs font-medium rounded-full glass text-gray-300 border border-gray-700/50"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-                <div className="flex items-center gap-3 pt-4 border-t border-gray-800/50">
+    <section id="projects" className="space-y-6">
+      <Reveal>
+        <h2 className="text-xl font-bold">Projects</h2>
+      </Reveal>
+      <div className="space-y-0">
+        {projects.map((project, i) => (
+          <Reveal key={project.title} delay={0.05 + i * 0.02}>
+            <div className="group border-b border-gray-800/60 py-5">
+              <div className="flex items-start justify-between gap-3">
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/title"
+                >
+                  <h3 className="text-base font-medium text-white underline decoration-1 underline-offset-4 transition-colors group-hover/title:text-primary-300">
+                    {project.title}
+                  </h3>
+                </a>
+                <div className="flex shrink-0 items-center gap-3 pt-1">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-primary-400 transition-colors group/link"
+                    aria-label={`${project.title} GitHub`}
+                    className="text-gray-500 transition-colors hover:text-primary-400"
                   >
-                    <Github className="w-4 h-4" />
-                    <span>GitHub</span>
+                    <Github className="h-4 w-4" />
                   </a>
-                  <a
-                    href={project.demo}
-                    className="flex items-center gap-2 text-sm text-gray-400 hover:text-accent-400 transition-colors group/link"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    <span>Live Demo</span>
-                  </a>
+                  {project.demo !== '#' && (
+                    <a
+                      href={project.demo}
+                      aria-label={`${project.title} demo`}
+                      className="text-gray-500 transition-colors hover:text-accent-400"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                    </a>
+                  )}
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              <p className="mt-2 text-sm leading-relaxed text-gray-400">{project.description}</p>
+              <p className="mt-3 text-xs text-gray-500">{project.tags.join(' · ')}</p>
+            </div>
+          </Reveal>
+        ))}
       </div>
     </section>
   );
