@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Cpu, Brain, Code, Database, Globe, Sparkles } from 'lucide-react';
-import mePhoto from '../assets/images/me.jpeg';
+import mePhoto from '../assets/images/me.webp';
 
 const floatingIcons = [
   { Icon: Cpu, color: 'text-neon-blue', delay: 0, x: '10%', y: '22%' },
@@ -40,21 +40,23 @@ export default function Hero() {
               Available for opportunities
             </span>
             <h1 className="text-xl font-bold tracking-tighter sm:text-3xl lg:text-4xl">
-              Hi, I'm <span className="text-primary-400">Samwel</span>
+              Hi, I'm <span className="text-primary-400">Samwel Edmund Oguda</span>
             </h1>
             <p className="max-w-[600px] leading-relaxed text-gray-400 md:text-xl">
-              Software Engineer and AI Developer building intelligent systems with Python and
-              machine learning. Passionate about solving real-world problems — from AgriTech to
-              predictive analytics.
+              Software Engineer, Backend Developer, and Machine Learning Practitioner building
+              intelligent systems with Python and AI — from AgriTech to predictive analytics.
             </p>
           </div>
-          <div className="flex size-24 shrink-0 overflow-hidden rounded-full border border-gray-700 sm:size-28">
-            <img
-              src={mePhoto}
-              alt="Samwel Edmund Oguda"
-              className="h-full w-full object-cover"
-            />
-          </div>
+          <img
+            src={mePhoto}
+            alt="Samwel Edmund Oguda - Software Engineer, Backend Developer and Machine Learning Practitioner"
+            width={112}
+            height={112}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="flex size-24 shrink-0 overflow-hidden rounded-full border border-gray-700 object-cover sm:size-28"
+          />
         </div>
       </div>
     </section>

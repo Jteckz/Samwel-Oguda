@@ -16,8 +16,8 @@ export default function About() {
       <Reveal delay={0.05}>
         <div className="space-y-4 leading-relaxed text-gray-400">
           <p>
-            I'm <span className="font-medium text-white">Samwel Edmund Oguda</span>, an AI Developer
-            and Machine Learning Engineer with a deep passion for building intelligent systems that
+            I'm <span className="font-medium text-white">Samwel Edmund Oguda</span>, an Software Developer
+            and AI Engineer with a deep passion for building intelligent systems that
             solve real-world problems.
           </p>
           <p>
