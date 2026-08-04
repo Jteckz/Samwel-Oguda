@@ -1,5 +1,5 @@
 export const SITE = {
-  url: 'https://mi-porti-theta.vercel.app',
+  url: 'https://samwel-oguda.vercel.app',
   name: 'Samwel Edmund Oguda',
   siteName: 'Samwel Edmund Oguda',
   author: 'Samwel Edmund Oguda',

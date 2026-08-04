@@ -2,7 +2,7 @@
 
 Personal portfolio of **Samwel Edmund Oguda** — Software Engineer, Backend Developer & Machine Learning Practitioner. Built with React, TypeScript, Vite and Tailwind CSS. Deployed on Vercel.
 
-**Production URL:** https://mi-porti-theta.vercel.app/
+**Production URL:** https://samwel-oguda.vercel.app/
 
 ---
 
@@ -27,11 +27,11 @@ Personal portfolio of **Samwel Edmund Oguda** — Software Engineer, Backend Dev
 
 1. Go to https://search.google.com/search-console and sign in with your Google account.
 2. Click **Add property** → choose **Domain** or **URL prefix**:
-   - **URL prefix** (simplest): enter `https://mi-porti-theta.vercel.app/` and click Continue.
+   - **URL prefix** (simplest): enter `https://samwel-oguda.vercel.app/` and click Continue.
 3. Choose a verification method:
    - **HTML tag**: copy the `<meta name="google-site-verification" content="...">` tag and paste it inside the `<head>` of `index.html`, then deploy. Remove it after verification.
    - **DNS (TXT record)**: only available with the *Domain* property type; requires adding a TXT record in your domain's DNS.
-   - **HTML file upload**: download `googleXXXX.html`, drop it in `public/`, deploy, then visit `https://mi-porti-theta.vercel.app/googleXXXX.html`.
+   - **HTML file upload**: download `googleXXXX.html`, drop it in `public/`, deploy, then visit `https://samwel-oguda.vercel.app/googleXXXX.html`.
 4. Click **Verify** — ownership will be confirmed once the change is live on Vercel.
 
 ## 2. Submitting the sitemap
@@ -43,7 +43,7 @@ Personal portfolio of **Samwel Edmund Oguda** — Software Engineer, Backend Dev
 ## 3. Requesting indexing
 
 1. In Search Console, use **URL Inspection** (top search bar).
-2. Paste a page URL, e.g. `https://mi-porti-theta.vercel.app/`, and press Enter.
+2. Paste a page URL, e.g. `https://samwel-oguda.vercel.app/`, and press Enter.
 3. Click **Request indexing**. Do this for each page you want indexed fast (home, about, skills, projects, experience, contact).
 4. Google usually re-crawls within a few days.
 
@@ -52,9 +52,9 @@ Personal portfolio of **Samwel Edmund Oguda** — Software Engineer, Backend Dev
 After a Vercel deployment, confirm these URLs return 200 (not the SPA fallback):
 
 ```
-https://mi-porti-theta.vercel.app/robots.txt
-https://mi-porti-theta.vercel.app/sitemap.xml
-https://mi-porti-theta.vercel.app/images/og-image.jpg
+https://samwel-oguda.vercel.app/robots.txt
+https://samwel-oguda.vercel.app/sitemap.xml
+https://samwel-oguda.vercel.app/images/og-image.jpg
 ```
 
 You can test with `curl -I` or by opening them in a browser.

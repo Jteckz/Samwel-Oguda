@@ -1,8 +1,8 @@
-# robots.txt for https://mi-porti-theta.vercel.app/
+# robots.txt for https://samwel-oguda.vercel.app/
 # Allow all crawlers to index the site.
 
 User-agent: *
 Allow: /
 
 # Sitemap reference for search engines.
-Sitemap: https://mi-porti-theta.vercel.app/sitemap.xml
+Sitemap: https://samwel-oguda.vercel.app/sitemap.xml
