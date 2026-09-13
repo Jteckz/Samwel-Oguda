@@ -3,7 +3,7 @@ import Reveal from './Reveal';
 
 const projects = [
   {
-    title: 'XVec AI| Production',
+    title: 'XVec AI | Production RAG for Trustworthy PDF Q&A',
     description: 'Grounded Production RAG for Trustworthy PDF Q&A',
     tags: ['PDF Q&A + Hybrid Search (BM25 + vector RRF) + Cross-Encoder Rerank + Grounding + Page-Level Citations + LangGraph + FastAPI + React'],
     github: 'https://github.com/Jteckz/production-RAG',
