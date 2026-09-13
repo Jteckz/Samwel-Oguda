@@ -3,10 +3,10 @@ import Reveal from './Reveal';
 
 const projects = [
   {
-    title: 'Smart Water Level Detection System',
-    description: 'A smart embedded system that detects and monitors water levels automatically using Arduino Uno microcontroller technology.',
-    tags: ['Arduino', 'Embedded Systems', 'IoT', 'C++'],
-    github: 'https://github.com/Jteckz',
+    title: 'XVec AI| Production',
+    description: 'Grounded Production RAG for Trustworthy PDF Q&A',
+    tags: ['PDF Q&A + Hybrid Search (BM25 + vector RRF) + Cross-Encoder Rerank + Grounding + Page-Level Citations + LangGraph + FastAPI + React'],
+    github: 'https://github.com/Jteckz/production-RAG',
     demo: '#',
   },
   {

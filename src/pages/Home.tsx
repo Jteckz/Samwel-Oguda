@@ -8,7 +8,7 @@ export default function Home() {
       <SEO
         path="/"
         title={SITE.title}
-        description="Samwel Edmund Oguda - Software Engineer, Backend Developer and Machine Learning Practitioner. Building intelligent systems with Python, Flask, TensorFlow and AI. Based in Tanzania."
+        description="Samwel Edmund Oguda - Software Engineer, Backend Developer and Machine Learning Practitioner. Building intelligent systems with Python, Flask, TensorFlow and AI. Based in Dar es Salaam, Tanzania."
       />
       <Hero />
     </>
