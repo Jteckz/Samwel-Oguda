@@ -43,8 +43,7 @@ export default function Hero() {
               Hi, I'm <span className="text-primary-400">Samwel Edmund Oguda</span>
             </h1>
             <p className="max-w-[600px] leading-relaxed text-gray-400 md:text-xl">
-              Software Engineer, Backend Developer, and Machine Learning Practitioner building
-              intelligent systems with Python and AI — from AgriTech to predictive analytics.
+             I build software with Python, from backend APIs and database-driven applications to AI agents and retrieval-augmented generation systems. I'm focused on writing practical software, solving real-world problems, and growing as an AI and backend engineer.
             </p>
           </div>
           <img
