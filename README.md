@@ -23,6 +23,70 @@ Personal portfolio of **Samwel Edmund Oguda** — Software Engineer, Backend Dev
 
 ---
 
+## 3D book page-turn transition
+
+Every route is treated as a page of a book. Switching sections plays a physical
+page turn: the outgoing page is hinged on the spine, lifts, sweeps away in 3D
+and reveals the incoming page underneath it.
+
+| Item | Location |
+| --- | --- |
+| Transition engine (navigation, snapshot, scroll lock, reduced motion) | `src/components/BookFlipProvider.tsx` |
+| Animated leaf + shadow + lighting overlays | `src/components/BookFlipLayer.tsx` |
+| Context + `useBookFlip()` hook | `src/components/BookFlipContext.ts` |
+| Timing, easing, keyframes, reading order | `src/lib/flip.ts` |
+| 3D / paper CSS (perspective, gradients, fold line) | `src/index.css` → `@layer components` |
+| Route table shared by the router and the flip layer | `src/routes.tsx` |
+
+**How it works**
+
+1. `flipTo(path)` clones the current `<main>` into a static DOM snapshot
+   (`cloneNode`) *before* the router swaps the content — the leaf therefore
+   shows exactly what the visitor was looking at, including scroll position
+   and in-flight form state.
+2. The router navigates immediately, so the URL and the incoming page are
+   correct right away; the snapshot is displayed as the turning leaf.
+3. Framer Motion animates `rotateY` about the spine (`transform-origin:
+   left center` forward, `right center` backward) with a lift/sway/scale
+   envelope, a cast shadow whose width is `cos(angle)`, paper shading, a
+   travelling specular sheen and a bright fold line.
+
+**Using it from your own components**
+
+```tsx
+import { useBookFlip } from './components/BookFlipContext';
+
+const { flipTo, isFlipping } = useBookFlip();
+<button onClick={() => flipTo('/projects')}>Projects</button>
+```
+
+**Tuning**
+
+Everything is in `src/lib/flip.ts`: `FLIP_DURATION`, `FLIP_TIMES`,
+`FLIP_EASES`, `FLIP_ROTATE_FORWARD/BACKWARD`, `FLIP_SHADOW_SCALE`,
+`FLIP_SHADE_OPACITY`, and `SECTION_ORDER` (which also decides the turn
+direction — re-order it to match the order of the pages in your book).
+
+**Optional: turn pages by scrolling**
+
+The site is route based, so scrolling never changes the section. To flip to
+the next page when the visitor reaches the bottom of a page, add this to the
+page component:
+
+```tsx
+useEffect(() => {
+  const onScroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 120) {
+      flipTo('/about');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  return () => window.removeEventListener('scroll', onScroll);
+}, [flipTo]);
+```
+
+---
+
 ## 1. Connecting Google Search Console
 
 1. Go to https://search.google.com/search-console and sign in with your Google account.

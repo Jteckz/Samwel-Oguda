@@ -29,3 +29,137 @@
     @apply bg-gray-600;
   }
 }
+
+@layer components {
+  /* ---------------------------------------------------------------------
+     3D book page-turn
+     ---------------------------------------------------------------------
+     .flip-layer   viewport sized container that owns the perspective
+     .flip-shadow  shadow thrown by the leaf onto the page underneath
+     .flip-leaf    the outgoing page, hinged on the spine of the book
+     .flip-page    clipping box for the page surface + lighting overlays
+     ------------------------------------------------------------------- */
+
+  .flip-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+    perspective: 1600px;
+    perspective-origin: 50% 50%;
+  }
+
+  .flip-shadow {
+    position: absolute;
+    inset: 0;
+    will-change: transform, opacity;
+  }
+
+  .flip-shadow__wash {
+    position: absolute;
+    inset: 0;
+    filter: blur(10px);
+  }
+
+  .flip-shadow__wash.is-forward {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 38%,
+      rgba(0, 0, 0, 0.55) 88%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  }
+
+  .flip-shadow__wash.is-backward {
+    background: linear-gradient(
+      to left,
+      rgba(0, 0, 0, 0) 38%,
+      rgba(0, 0, 0, 0.55) 88%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  }
+
+  .flip-leaf {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  .flip-page {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    background-color: #030712; /* gray-950 */
+  }
+
+  .flip-snapshot {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    will-change: transform;
+  }
+
+  /* The leaf catches less light as it turns away from the viewer. */
+  .flip-shade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .flip-shade.is-forward {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.95) 100%);
+  }
+
+  .flip-shade.is-backward {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.95) 100%);
+  }
+
+  /* A soft sheen that travels across the paper while it turns. */
+  .flip-gloss {
+    position: absolute;
+    inset-block: 0;
+    left: 0;
+    width: 200%;
+    pointer-events: none;
+    will-change: transform;
+    background: linear-gradient(
+      100deg,
+      transparent 38%,
+      rgba(255, 255, 255, 0) 42%,
+      rgba(255, 255, 255, 0.09) 50%,
+      rgba(255, 255, 255, 0) 58%,
+      transparent 62%
+    );
+  }
+
+  /* Highlight along the leading edge (the fold). */
+  .flip-edge {
+    position: absolute;
+    inset-block: 0;
+    width: 3px;
+    pointer-events: none;
+    filter: blur(1px);
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.45) 35%,
+      rgba(255, 255, 255, 0.15) 70%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+
+  .flip-edge.is-forward {
+    right: 0;
+  }
+
+  .flip-edge.is-backward {
+    left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-layer {
+    display: none;
+  }
+}
