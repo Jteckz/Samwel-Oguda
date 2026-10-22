@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Home, User, Code2, FolderGit2, Briefcase, Mail, Github, Linkedin, MessageCircle } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { useBookFlip } from './BookFlipContext';
 
 interface NavItem {
   path: string;
@@ -25,13 +26,14 @@ const socialItems = [
 
 export default function BottomNav() {
   const location = useLocation();
+  const { flipTo, isFlipping } = useBookFlip();
 
   return (
     <>
       <div className="pointer-events-none fixed inset-x-0 bottom-0 z-30 mx-auto mb-4 flex h-full max-h-14 origin-bottom justify-center">
         <div className="fixed inset-x-0 bottom-0 h-16 w-full bg-gray-950 to-transparent backdrop-blur-lg [-webkit-mask-image:linear-gradient(to_top,black,transparent)]" />
         <div className="pointer-events-auto relative z-50 mx-auto flex h-full w-max items-center rounded-full border border-gray-700/50 bg-gray-900/70 px-1 p-2 shadow-lg shadow-black/40 backdrop-blur-xl">
-          <nav aria-label="Primary" className="flex items-center">
+          <nav aria-label="Primary" className="flex items-center" aria-busy={isFlipping}>
             {navItems.map(({ path, icon: Icon, label }) => {
               const isActive = location.pathname === path;
               return (
@@ -41,6 +43,22 @@ export default function BottomNav() {
                   aria-label={label}
                   aria-current={isActive ? 'page' : undefined}
                   title={label}
+                  onClick={(event) => {
+                    // Let the browser handle modified clicks (new tab, etc.).
+                    if (
+                      event.defaultPrevented ||
+                      event.button !== 0 ||
+                      event.metaKey ||
+                      event.ctrlKey ||
+                      event.shiftKey ||
+                      event.altKey
+                    ) {
+                      return;
+                    }
+                    event.preventDefault();
+                    if (isActive) return;
+                    flipTo(path);
+                  }}
                   className={`flex aspect-square items-center justify-center rounded-full transition-colors ${
                     isActive
                       ? 'text-primary-400'
