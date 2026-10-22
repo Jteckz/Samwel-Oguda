@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Cpu, Brain, Code, Database, Globe, Sparkles } from 'lucide-react';
 import mePhoto from '../assets/images/me.webp';
+import Character from './Character';
 
 const floatingIcons = [
   { Icon: Cpu, color: 'text-neon-blue', delay: 0, x: '10%', y: '22%' },
@@ -33,29 +34,32 @@ export default function Hero() {
       ))}
 
       <div className="mx-auto w-full max-w-2xl px-6">
-        <div className="flex justify-between gap-4">
-          <div className="flex flex-1 flex-col space-y-3">
-            <span className="inline-flex w-max items-center gap-2 rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1 text-xs text-primary-300">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400" />
-              Available for opportunities
-            </span>
-            <h1 className="text-xl font-bold tracking-tighter sm:text-3xl lg:text-4xl">
-              Hi, I'm <span className="text-primary-400">Samwel Edmund Oguda</span>
-            </h1>
-            <p className="max-w-[600px] leading-relaxed text-gray-400 md:text-xl">
-             I build software with Python, from backend APIs and database-driven applications to AI agents and retrieval-augmented generation systems. I'm focused on writing practical software, solving real-world problems, and growing as an AI and backend engineer.
-            </p>
+        <div className="relative">
+          <Character />
+          <div className="flex justify-between gap-4">
+            <div className="flex flex-1 flex-col space-y-3">
+              <span className="inline-flex w-max items-center gap-2 rounded-full border border-primary-500/20 bg-primary-500/10 px-3 py-1 text-xs text-primary-300">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400" />
+                Available for opportunities
+              </span>
+              <h1 className="text-xl font-bold tracking-tighter sm:text-3xl lg:text-4xl">
+                Hi, I'm <span className="text-primary-400">Samwel Edmund Oguda</span>
+              </h1>
+              <p className="max-w-[600px] leading-relaxed text-gray-400 md:text-xl">
+                I build software with Python, from backend APIs and database-driven applications to AI agents and retrieval-augmented generation systems. I'm focused on writing practical software, solving real-world problems, and growing as an AI and backend engineer.
+              </p>
+            </div>
+            <img
+              src={mePhoto}
+              alt="Samwel Edmund Oguda - Software Engineer, Backend Developer and Machine Learning Practitioner"
+              width={112}
+              height={112}
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+              className="flex size-24 shrink-0 overflow-hidden rounded-full border border-gray-700 object-cover sm:size-28"
+            />
           </div>
-          <img
-            src={mePhoto}
-            alt="Samwel Edmund Oguda - Software Engineer, Backend Developer and Machine Learning Practitioner"
-            width={112}
-            height={112}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            className="flex size-24 shrink-0 overflow-hidden rounded-full border border-gray-700 object-cover sm:size-28"
-          />
         </div>
       </div>
     </section>

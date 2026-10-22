@@ -1,4 +1,5 @@
 import ProjectsSection from '../components/Projects';
+import Character from '../components/Character';
 import SEO from '../components/SEO';
 
 export default function Projects() {
@@ -10,7 +11,10 @@ export default function Projects() {
         description="Explore projects by Samwel Edmund Oguda: Smart water level detection, Iris prediction ML system, Titanic survival prediction, Flask REST APIs and AgriTech platforms."
       />
       <div className="py-16 sm:py-24">
-        <ProjectsSection />
+        <div className="relative">
+          <Character />
+          <ProjectsSection />
+        </div>
       </div>
     </>
   );

@@ -1,4 +1,5 @@
 import ContactSection from '../components/Contact';
+import Character from '../components/Character';
 import SEO from '../components/SEO';
 
 export default function Contact() {
@@ -10,7 +11,10 @@ export default function Contact() {
         description="Get in touch with Samwel Edmund Oguda for project collaborations, freelance work or opportunities. Email, WhatsApp and social media links available."
       />
       <div className="py-16 sm:py-24">
-        <ContactSection />
+        <div className="relative">
+          <Character />
+          <ContactSection />
+        </div>
       </div>
     </>
   );

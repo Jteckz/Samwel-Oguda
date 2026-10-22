@@ -1,4 +1,5 @@
 import AboutSection from '../components/About';
+import Character from '../components/Character';
 import SEO from '../components/SEO';
 
 export default function About() {
@@ -10,7 +11,10 @@ export default function About() {
         description="Learn about Samwel Edmund Oguda - AI Developer, Machine Learning Engineer and Backend Developer passionate about intelligent systems, AgriTech innovation and practical AI solutions."
       />
       <div className="py-16 sm:py-24">
-        <AboutSection />
+        <div className="relative">
+          <Character />
+          <AboutSection />
+        </div>
       </div>
     </>
   );
