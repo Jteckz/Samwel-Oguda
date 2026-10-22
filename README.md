@@ -87,6 +87,56 @@ useEffect(() => {
 
 ---
 
+## Interactive character
+
+A small stick figure stands on the top edge of every section. It walks
+sideways towards the cursor, turns around when it changes direction, and
+sits down while you scroll down (standing back up when you scroll up).
+
+| Item | Location |
+| --- | --- |
+| The figure, its rig and the animation loop | `src/components/Character.tsx` |
+| Colours, glow and the responsive size | `src/index.css` → `.character-svg` |
+| Placement in each page | `src/pages/*.tsx`, `src/components/Hero.tsx` |
+
+**Why plain SVG + `requestAnimationFrame`**
+
+The figure is a skeleton of nested `<g>` elements (pelvis → torso → head /
+arms, pelvis → thigh → knee → foot). Every joint is a `transform="rotate(...)"`
+that is rewritten each frame, so the whole animation runs outside of React
+and never triggers a re-render. A Lottie file would work too, but it cannot
+react to the cursor, and Framer Motion is not a good fit for a continuous
+cycle that is driven by distance travelled.
+
+**The three behaviours**
+
+1. **Walking** – `pointermove` on `window` stores the cursor X. Each frame the
+   character eases towards it (with a speed cap so it *chases* the cursor
+   instead of teleporting) and the walk cycle advances by
+   `distance / stride`, so the feet plant instead of sliding. The stride
+   length is `height * 0.85`, and the figure mirrors itself (`scaleX(-1)`)
+   when it changes direction.
+2. **Posture** – `wheel` and `scroll` listeners set a `sit` target
+   (`deltaY > 0` → sit, `deltaY < 0` → stand). The value is eased and then
+   blended into every joint angle, so the character smoothly sits down and
+   stands up. While seated it stops walking and turns its head towards the
+   cursor.
+3. **Placement** – the component renders into a zero-height absolutely
+   positioned box, so the figure's feet land exactly on the top edge of the
+   content it belongs to instead of floating above it. It lives inside
+   `<main>`, which means it is also captured by the page-turn snapshot and
+   turns with the page.
+
+**Tuning** – the constants at the top of `src/components/Character.tsx`:
+`CHARACTER_HEIGHT` (rendered size), `MAX_SPEED` (walking speed),
+`TURN_SPEED` (how fast it turns around), `STRIDE_FACTOR` (step length) and
+the `STAND_NEAR` / `STAND_FAR` / `SIT` pose objects.
+
+> Visitors who enable "reduce motion" in their OS get a static figure that
+> does not walk or sit.
+
+---
+
 ## 1. Connecting Google Search Console
 
 1. Go to https://search.google.com/search-console and sign in with your Google account.

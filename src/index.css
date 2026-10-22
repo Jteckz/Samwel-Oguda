@@ -156,6 +156,55 @@
   .flip-edge.is-backward {
     left: 0;
   }
+
+  /* ---------------------------------------------------------------------
+     Interactive character
+     ---------------------------------------------------------------------
+     A small stick figure that walks along the top edge of the content.
+     The rig is plain SVG; every joint is rotated from a single rAF loop
+     (see src/components/Character.tsx).
+     ------------------------------------------------------------------- */
+
+  .character-svg {
+    overflow: visible;
+    height: 96px;
+    width: auto;
+    filter: drop-shadow(0 0 7px rgba(129, 140, 248, 0.45));
+  }
+
+  @media (max-width: 640px) {
+    .character-svg {
+      height: 76px;
+    }
+  }
+
+  .character-limb {
+    fill: none;
+    stroke: #a5b4fc;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* the far side of the body is dimmer, which reads as depth */
+  .character-far {
+    stroke: #6366f1;
+    opacity: 0.7;
+  }
+
+  .character-head,
+  .character-hand {
+    fill: #a5b4fc;
+    stroke: none;
+  }
+
+  .character-far .character-hand {
+    fill: #6366f1;
+  }
+
+  .character-shadow {
+    fill: rgba(0, 0, 0, 0.55);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

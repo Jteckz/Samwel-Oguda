@@ -1,6 +1,7 @@
 import ExperienceSection from '../components/Experience';
 import Education from '../components/Education';
 import Certifications from '../components/Certifications';
+import Character from '../components/Character';
 import SEO from '../components/SEO';
 
 export default function Experience() {
@@ -12,7 +13,10 @@ export default function Experience() {
         description="Professional journey of Samwel Edmund Oguda: Huawei ICT Academy Instructor, Flask API Developer, Machine Learning Practitioner, education and certifications."
       />
       <div className="space-y-20 py-16 sm:py-24">
-        <ExperienceSection />
+        <div className="relative">
+          <Character />
+          <ExperienceSection />
+        </div>
         <Education />
         <Certifications />
       </div>
